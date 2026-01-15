@@ -88,6 +88,41 @@ public sealed partial class CargoSystem
         }
     }
 
+    public void StealFunds(Entity<CargoOrderConsoleComponent> ent, int amount)
+    {
+        if (_station.GetOwningStation(ent) is not { } station ||
+            !TryComp<StationBankAccountComponent>(station, out var bank))
+            return;
+
+        var min = GetBalanceFromAccount((station, bank), ent.Comp.Account);
+
+        if (amount <= 0 || min <= 0)
+            return;
+
+        if (Timing.CurTime < ent.Comp.NextAccountActionTime)
+            return;
+
+        amount = Math.Min(amount, min);
+
+        ent.Comp.NextAccountActionTime = Timing.CurTime + ent.Comp.UnboundedAccountActionDelay;
+        UpdateBankAccount((station, bank), -amount, ent.Comp.Account, dirty: false);
+        _audio.PlayPvs(ApproveSound, ent);
+
+        var ourAccount = _protoMan.Index(ent.Comp.Account);
+        var stackPrototype = _protoMan.Index(ent.Comp.CashType);
+        _stack.SpawnAtPosition(amount, stackPrototype, Transform(ent).Coordinates);
+
+        if (!_emag.CheckFlag(ent, EmagType.Interaction))
+        {
+            var msg = Loc.GetString("cargo-console-fund-withdraw-broadcast",
+                ("name", Loc.GetString("cargo-console-fund-transfer-user-unknown")),
+                ("amount", amount),
+                ("name1", Loc.GetString(ourAccount.Name)),
+                ("code1", Loc.GetString(ourAccount.Code)));
+            _radio.SendRadioMessage(ent, msg, ourAccount.RadioChannel, ent, escapeMarkup: false);
+        }
+    }
+
     private void OnToggleLimit(Entity<CargoOrderConsoleComponent> ent, ref CargoConsoleToggleLimitMessage args)
     {
         if (!_accessReaderSystem.FindAccessTags(args.Actor).Intersect(ent.Comp.RemoveLimitAccess).Any())

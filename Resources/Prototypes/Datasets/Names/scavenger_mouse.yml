@@ -1,0 +1,11 @@
+- type: localizedDataset
+  id: NamesScavengerMouseFirst
+  values:
+    prefix: names-scavenger-mouse-first-dataset-
+    count: 17
+
+- type: localizedDataset
+  id: NamesScavengerMouseLast
+  values:
+    prefix: names-scavenger-mouse-last-dataset-
+    count: 16

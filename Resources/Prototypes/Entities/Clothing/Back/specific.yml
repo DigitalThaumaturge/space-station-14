@@ -152,3 +152,24 @@
     blacklist:
       components:
       - SiliconLawProvider
+
+- type: entity
+  parent: ClothingBackpack
+  id: ScavengerRewardBag
+  name: scavenger sack
+  description: An extra-spacious sack best suited for storing ill-gotten goods.
+  components:
+  - type: Sprite
+    sprite: Clothing/Back/Duffels/duffel.rsi
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,8,5
+
+- type: entity
+  parent: ScavengerRewardBag
+  id: EvolvedScavengerRewardBag
+  suffix: Unremoveable
+  components:
+  - type: Unremoveable
+    deleteOnDrop: false

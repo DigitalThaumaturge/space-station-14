@@ -1,0 +1,318 @@
+- type: entity
+  name: scavenger
+  id: MobScavengerMouse
+  parent: [ SimpleMobBase, MobCombat ]
+  description: That's one BIG mouse. While you're wasting time reading this description, she's probably robbing you blind.
+  components:
+  - type: CombatMode
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.00
+    baseSprintSpeed : 5.00
+  - type: InputMover
+  - type: MobMover
+  - type: CanHostGuardian
+  - type: NpcFactionMember
+    factions:
+      - Mouse
+  - type: HTN
+    constantlyReplan: false
+    rootTask:
+      task: MouseCompound
+  - type: Reactive
+    groups:
+      Flammable: [Touch]
+      Extinguish: [Touch]
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: Mobs/Animals/regalrat.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: regalrat
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: eyes
+      shader: unshaded
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 230
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobState
+  - type: Deathgasp
+  - type: MobStateActions
+    actions:
+      Critical:
+      - ActionCritSuccumb
+      - ActionCritFakeDeath
+      - ActionCritLastWords
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Critical
+      200: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcBite
+    damage:
+      types:
+        Piercing: 0
+  - type: ComplexInteraction
+  - type: Body
+    prototype: Rat
+    requiredLegs: 0 # TODO: Make more than 1 leg, set to 0 to avoid sprint speed being reset by the body system
+  - type: Hunger # probably should be prototyped
+    thresholds:
+      Overfed: 200
+      Okay: 150
+      Peckish: 100
+      Starving: 50
+      Dead: 0
+    baseDecayRate: 0.01666666666
+  - type: Thirst
+    thresholds:
+      OverHydrated: 600
+      Okay: 450
+      Thirsty: 300
+      Parched: 150
+      Dead: 0
+    baseDecayRate: 0.1
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: regalrat
+        BaseUnshaded: eyes
+      Critical:
+        Base: critical
+      Dead:
+        Base: dead
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-rat-king-name
+    description: ghost-role-information-rat-king-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Tag
+    tags:
+      - CannotSuicide
+      - FootstepSound
+      - VimPilot 
+  - type: NoSlip
+  - type: ScavengerMouse
+    hungerPerDomainUse: 50
+    whitelist:
+      tags:
+        - ConstructionMaterial  
+      components:
+        - Cash
+        - Edible
+  - type: MouseAccent
+  - type: Speech
+    speechSounds: Squeak
+    speechVerb: SmallMob
+    allowedEmotes: ['Squeak']
+  - type: Vocal
+    sounds:
+      Male: Mouse
+      Female: Mouse
+      Unsexed: Mouse
+    wilhelmProbability: 0.001
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatRat
+      amount: 3
+    - id: ScavengerRewardBag
+    - id: LootSpawnerMaterialsHighValue
+    - id: LootSpawnerMaterialsSurplus
+      amount: 2
+    - id: ToySpawner
+  - type: MobPrice
+    price: 2000 # mouse wealth, all stolen of course
+  - type: RandomMetadata
+    nameSegments:
+    - NamesScavengerMouseFirst
+    - NamesScavengerMouseLast
+    nameFormat: name-format-regal-rat
+  - type: GuideHelp
+    guides:
+    - MinorAntagonists
+  - type: Grammar
+    attributes:
+      gender: female
+
+- type: entity
+  name: smart scavenger
+  id: MobEvolvedScavengerMouse
+  parent: [SimpleMobBase, StripableInventoryBase]
+  description: That's one BIG mouse. Careful — there's a canny intelligence in her beady little eyes.
+  components:
+  - type: CombatMode
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.00
+    baseSprintSpeed : 5.00
+  - type: Inventory
+    templateId: ScavengerMouse
+    speciesId: monkey
+  - type: Deathgasp
+  - type: Cuffable
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 230
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: Stripping
+  - type: Sprite
+    drawdepth: SmallMobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: monkey
+      sprite: Mobs/Animals/monkey.rsi
+    - map: [ "jumpsuit" ]
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+    - map: [ "ears" ]
+    - map: [ "id" ]
+    - map: [ "outerClothing" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+  - type: Hands
+  - type: ComplexInteraction
+  - type: Body
+    prototype: EvolvedScavengerMouse
+    requiredLegs: 0 # TODO: Make more than 1 leg, set to 0 to avoid sprint speed being reset by the body system
+  - type: Hunger # probably should be prototyped
+    thresholds:
+      Overfed: 200
+      Okay: 150
+      Peckish: 100
+      Starving: 50
+      Dead: 0
+    baseDecayRate: 0.01666666666
+  - type: Thirst
+    thresholds:
+      OverHydrated: 600
+      Okay: 450
+      Thirsty: 300
+      Parched: 150
+      Dead: 0
+    baseDecayRate: 0.1
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Monkey_burning
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Critical
+      200: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcBite
+    damage:
+      types:
+        Piercing: 0
+  - type: NoSlip
+  - type: ScavengerMouse
+    hungerPerDomainUse: 50
+    evolved: true
+  - type: MouseAccent
+  - type: Speech
+    speechSounds: Squeak
+    speechVerb: SmallMob
+    allowedEmotes: ['Squeak']
+  - type: Vocal
+    sounds:
+      Male: Mouse
+      Female: Mouse
+      Unsexed: Mouse
+    wilhelmProbability: 0.001
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatRat
+      amount: 3
+    - id: LootSpawnerMaterialsHighValue
+    - id: LootSpawnerMaterialsSurplus
+      amount: 2
+    - id: ToySpawner
+  - type: MobPrice
+    price: 2000 # mouse wealth, all stolen of course
+    nameFormat: name-format-regal-rat
+  - type: GuideHelp
+    guides:
+    - MinorAntagonists
+  - type: Grammar
+    attributes:
+      gender: female
+  - type: Puller
+    needsHands: false
+  - type: CanHostGuardian
+  - type: NpcFactionMember
+    factions:
+      - Mouse
+  - type: HTN
+    constantlyReplan: false
+    rootTask:
+      task: MouseCompound
+  - type: IdExaminable
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-rat-king-name
+    description: ghost-role-information-rat-king-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleNeutral
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+    - VimPilot 
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+  - type: Crawler
+  - type: StatusIcon
+
+- type: entity
+  parent: BaseAction
+  id: ActionScavengerMouseDomain
+  name: Scavenger's Domain
+  description: Spend some hunger to release a cloud of ammonia into the air.
+  components:
+  - type: Action
+    useDelay: 6
+    icon:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: ratKingDomain
+  - type: InstantAction
+    event: !type:ScavengerMouseDomainActionEvent

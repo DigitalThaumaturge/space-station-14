@@ -1,0 +1,27 @@
+- type: body
+  id: EvolvedScavengerMouse
+  name: "animal"
+  root: torso
+  slots:
+    torso:
+      part: TorsoRat
+      connections:
+      - righthand
+      - lefthand
+      - legs
+      organs:
+        lungs: OrganRatLungs
+        stomach: OrganRatStomach
+        liver: OrganAnimalLiver
+        heart: OrganAnimalHeart
+        kidneys: OrganAnimalKidneys
+    lefthand:
+      part: LeftHandHuman # Rat/mice hands kinda look like human hands ... it's not THAT weird.
+    righthand:
+      part: RightHandHuman
+    legs:
+      part: LegsAnimal
+      connections:
+      - feet
+    feet:
+      part: FeetAnimal

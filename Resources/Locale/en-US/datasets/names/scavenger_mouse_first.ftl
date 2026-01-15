@@ -1,0 +1,17 @@
+names-scavenger-mouse-first-dataset-1 = Loot
+names-scavenger-mouse-first-dataset-2 = Ammonia
+names-scavenger-mouse-first-dataset-3 = Miss
+names-scavenger-mouse-first-dataset-4 = Trash
+names-scavenger-mouse-first-dataset-5 = Garbage
+names-scavenger-mouse-first-dataset-6 = Phantom
+names-scavenger-mouse-first-dataset-7 = Shiny
+names-scavenger-mouse-first-dataset-8 = Cheese
+names-scavenger-mouse-first-dataset-9 = Pest
+names-scavenger-mouse-first-dataset-10 = Verminous
+names-scavenger-mouse-first-dataset-11 = Pesky
+names-scavenger-mouse-first-dataset-12 = Junk
+names-scavenger-mouse-first-dataset-13 = Squeaky
+names-scavenger-mouse-first-dataset-14 = Resourceful
+names-scavenger-mouse-first-dataset-15 = Whiskered
+names-scavenger-mouse-first-dataset-16 = Little
+names-scavenger-mouse-first-dataset-17 = Cunning

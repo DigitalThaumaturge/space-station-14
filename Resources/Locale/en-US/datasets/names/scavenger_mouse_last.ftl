@@ -1,0 +1,16 @@
+names-scavenger-mouse-last-dataset-1 = Rogue
+names-scavenger-mouse-last-dataset-2 = Thief
+names-scavenger-mouse-last-dataset-3 = Burgular
+names-scavenger-mouse-last-dataset-4 = Larcenist
+names-scavenger-mouse-last-dataset-5 = Collector
+names-scavenger-mouse-last-dataset-6 = Scavenger
+names-scavenger-mouse-last-dataset-7 = Scavver
+names-scavenger-mouse-last-dataset-8 = Appropriator
+names-scavenger-mouse-last-dataset-9 = Goblin
+names-scavenger-mouse-last-dataset-10 = Smuggler
+names-scavenger-mouse-last-dataset-11 = Enthusiast
+names-scavenger-mouse-last-dataset-12 = Rodent
+names-scavenger-mouse-last-dataset-13 = Mouse
+names-scavenger-mouse-last-dataset-14 = Hoarder
+names-scavenger-mouse-last-dataset-15 = Taker
+names-scavenger-mouse-last-dataset-16 = Princess

@@ -1,4 +1,4 @@
-﻿construction-category-all = All
+construction-category-all = All
 construction-category-furniture = Furniture
 construction-category-storage = Storage
 construction-category-tools = Tools
@@ -11,5 +11,6 @@ construction-category-utilities = Utilities
 construction-category-misc = Misc
 construction-category-clothing = Clothing
 construction-category-favorites = Favorites
+construction-category-learned = Learned
 construction-add-favorite-button = Add to favorites
 construction-remove-from-favorite-button = Remove from favorites

@@ -854,6 +854,9 @@
 - type: Tag # Used on DungeonRoom prototypes.
   id: LavaBrig # PrefabDunGen whitelist on LavaBrig DungeonConfig.
 
+- type: Tag 
+  id: LearnedKukriCraft # Used with Kukri ConstructionPrototype to make recipe exclusive for tagged entities.
+
 - type: Tag
   id: Lemon # CargoBounty: BountyLemon
 

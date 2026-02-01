@@ -1,0 +1,20 @@
+- type: constructionGraph
+  id: LearnableKukri
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: kukri
+      steps:
+      - material: MetalRod
+        amount: 2
+        doAfter: 2
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+      - material: Steel
+        amount: 4
+        doAfter: 2
+
+  - node: kukri
+    entity: KukriKnife

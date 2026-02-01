@@ -1,0 +1,10 @@
+- type: construction
+  id: LearnableKukri
+  graph: LearnableKukri
+  startNode: start
+  targetNode: kukri
+  category: construction-category-learned
+  objectType: Item
+  entityWhitelist:
+    tags:
+    - LearnedKukriCraft

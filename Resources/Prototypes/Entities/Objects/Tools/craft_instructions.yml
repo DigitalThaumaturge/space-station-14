@@ -1,0 +1,30 @@
+- type: entity
+  parent: BaseItem
+  id: BaseCraftInstructions
+  name: 
+  description: Instructions for assembling a ... nothing from spare parts. Might just teach you how to make one, if you study it hard enough.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/blueprint.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,0
+  - type: AddTagOnUse
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseCraftInstructions
+  id: KukriCraftInstructions
+  name: assembly instructions
+  suffix: for kukri
+  description: Instructions for assembling a kukri knife from spare parts. Might just teach you how to make one, if you study it hard enough.
+  components:
+  - type: AddTagOnUse
+    reusable: false
+    tags:
+    - LearnedKukriCraft
+    doAfterLength: 5.0

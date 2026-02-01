@@ -188,6 +188,9 @@
   - type: Item
     sprite: Objects/Weapons/Melee/kukri_knife.rsi
     storedSprite: null
+  - type: Construction
+    graph: LearnableKukri
+    node: kukri
 
 - type: entity
   parent: [ClothingHeadHatGreyFlatcap, BaseMinorContraband]

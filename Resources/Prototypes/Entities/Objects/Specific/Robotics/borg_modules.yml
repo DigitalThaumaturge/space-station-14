@@ -1689,3 +1689,19 @@
     - item: SuperCloakingDevice
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye2-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleHook
+  name: abduction hook xenoborg module
+  description: Module with a device that can reel in sources of brains.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_heavy
+    - state: grappling-module
+  - type: ItemBorgModule
+    hands:
+    - item: XenoborgHook
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: grappling-module }

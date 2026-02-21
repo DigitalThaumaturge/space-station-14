@@ -333,6 +333,15 @@
             False: { state: base-unshaded-off }
     - type: PacifismAllowedGun
 
+- type: entity
+  name: xenoborg hook
+  parent: WeaponGrapplingGun
+  id: XenoborgHook
+  components:
+    - type: BasicEntityAmmoProvider
+      proto: XenoborgHookHand
+      capacity: 1
+
 # Admeme
 - type: entity
   name: tether gun
